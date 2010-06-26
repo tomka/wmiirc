@@ -14,7 +14,7 @@ control:
       tag = argv[0]
       button = fs.lbar[tag]
       button.create unless button.exist?
-      button.write "#{CONFIG['display']['color']['normal']} #{tag}"
+      button.write "colors #{CONFIG['display']['color']['normal']}\nlabel #{tag}"
 
     DestroyTag: |
       tag = argv[0]
@@ -24,23 +24,23 @@ control:
     FocusTag: |
       tag = argv[0]
       button = fs.lbar[tag]
-      button.write "#{CONFIG['display']['color']['focus']} #{tag}" if button.exist?
+      button.write "colors #{CONFIG['display']['color']['focus']}\nlabel #{tag}" if button.exist?
 
     UnfocusTag: |
       tag = argv[0]
       button = fs.lbar[tag]
-      button.write "#{CONFIG['display']['color']['normal']} #{tag}" if button.exist?
+      button.write "colors #{CONFIG['display']['color']['normal']}\nlabel #{tag}" if button.exist?
 
     UrgentTag: |
       tag = argv[1]
       button = fs.lbar[tag]
-      button.write "#{CONFIG['display']['color']['notice']} #{tag}" if button.exist?
+      button.write "colors #{CONFIG['display']['color']['notice']}\nlabel #{tag}" if button.exist?
 
     NotUrgentTag: |
       tag = argv[1]
       button = fs.lbar[tag]
       color = curr_view.id == tag ? 'focus' : 'normal'
-      button.write "#{CONFIG['display']['color'][color]} #{tag}" if button.exist?
+      button.write "colors #{CONFIG['display']['color'][color]}\nlabel #{tag}" if button.exist?
 
     LeftBarClick: &LeftBarClick |
       mouse_code, view_id = argv

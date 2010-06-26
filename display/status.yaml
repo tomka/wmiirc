@@ -63,7 +63,7 @@ script:
               end
 
               @button.create unless @button.exist?
-              @button.write button_label.join(' ')
+              @button.write "colors #{button_label.shift}\nlabel #{button_label.join(' ')}"
 
               sleep(*Array(definition['refresh']))
             end
