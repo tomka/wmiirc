@@ -1,0 +1,111 @@
+#
+# High-level wmii configuration.
+#
+# Ruby code in this file has access
+# to a CONFIG constant which contains
+# the data in this configuration file.
+#
+
+##
+# A list of configuration files (partials) to import before
+# evaluating this configuration file.  Imported partials
+# may import other partials, recursively.  The contents of
+# each successive partial are merged with the previous one.
+#
+import:
+  - display/desktop/xsetroot 
+  - display/desktop/feh
+  - display/color/zenburn
+  - display/notice
+  - display/client
+  - display/tags
+#  - display/status/music/mpd
+  - display/status/volume/amixer
+  - display/status/storage/df
+  - display/status/system/loadavg
+  - display/status/time
+  - control/mouse
+  - control/keyboard/neo2
+  - control/keyboard/neo2/arrange_by_number
+  - control/keyboard/neo2/arrange
+  - control/keyboard/neo2/client
+  - control/keyboard/neo2/detach
+  - control/keyboard/neo2/focus_by_letter
+  - control/keyboard/neo2/focus_by_number
+  - control/keyboard/neo2/focus
+  - control/keyboard/neo2/group
+  - control/keyboard/neo2/launch
+  - control/keyboard/neo2/layout_by_number
+  - control/keyboard/neo2/layout
+  - control/keyboard/neo2/menu
+  - control/keyboard/neo2/move_by_number
+  - control/keyboard/neo2/move
+  - control/keyboard/neo2/swap_by_number
+  - control/keyboard/neo2/swap
+  - control/keyboard/neo2/zoom
+##
+# Arbitrary preferences.
+#
+prefer:
+  terminal: 'urxvt'
+  browser: 'firefox-3.5'
+  editor: 'gvim'
+  filer: 'nautilus  --no-desktop'
+
+##
+# Appearance settings.
+#
+display:
+
+  ##
+  # Where to display the horizontal status bar?
+  #
+  # Possible choices are "top" and "bottom".
+  #
+  bar: top
+
+  ##
+  # Font to use in all text drawn by wmii.
+  #
+  font:  -*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*
+
+  ##
+  # Thickness of client border (measured in pixels).
+  #
+  border: 1
+
+  ##
+  # Number of seconds a notice should be displayed.
+  #
+  notice: 3
+
+  ##
+  # Settings for columns drawn by wmii.
+  #
+  #   mode: <the wmii "colmode" setting>
+  #   rule: <the wmii "colrules" setting>
+  #
+  column:
+    mode: default
+    rule: |
+      /gimp/ -> 17+83+41
+      /.*/   -> 50+50
+
+  ##
+  # Mapping of clients to views they must appear on.
+  #
+  #   - <client props regular expression> : <tags to apply>
+  #
+  # These mappings are processed in top-to-bottom order.
+  # Processing stops after the first matching mapping is applied.
+  #
+  client:
+    - /\b(Firefox|Shiretoko|Opera|Konqueror)\b/         : www
+    - /\b(xconsole|alsamixer|XMMS|Sonata)\b/            : 1
+    - /^([p|P]idgin)\b/                                 : ~chat
+    - /\b(Thunderbird)\b/                               : com
+    - /^(rhythmbox|amarok|foobar2000)\b/                : media
+    - /^(eclipse|Eclipse)\b/                            : dev
+    - /\b(Tomboy.exe)\b/                                : notes
+    - /\b(VirtualBox)\b/                                : ~vm
+
